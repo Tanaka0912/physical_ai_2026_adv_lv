@@ -1,0 +1,10 @@
+diff --git a/ur_mtc_pick_place_demo/src/mtc_node.cpp b/ur_mtc_pick_place_demo/src/mtc_node.cpp
+--- a/ur_mtc_pick_place_demo/src/mtc_node.cpp
++++ b/ur_mtc_pick_place_demo/src/mtc_node.cpp
+@@ -1084,5 +1084,5 @@
+   auto ompl_planner_transit = std::make_shared<mtc::solvers::PipelinePlanner>(
+     this->shared_from_this(),
+     "ompl");
+-  ompl_planner_transit->setPlannerId(transit_planner_id);
++  ompl_planner_transit->setPlannerId("ompl", transit_planner_id);
+   RCLCPP_INFO(this->get_logger(), "Transit OMPL planner_id='%s'", transit_planner_id.c_str());

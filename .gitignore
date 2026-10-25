@@ -1,0 +1,5 @@
+logs/
+generated/
+**/__pycache__/
+video/raw/
+AGENT.md

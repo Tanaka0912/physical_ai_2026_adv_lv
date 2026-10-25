@@ -1,0 +1,15 @@
+diff --git a/ur_mtc_pick_place_demo/scripts/robot.sh b/ur_mtc_pick_place_demo/scripts/robot.sh
+--- a/ur_mtc_pick_place_demo/scripts/robot.sh
++++ b/ur_mtc_pick_place_demo/scripts/robot.sh
+@@ -150,5 +150,9 @@
+ echo "Launching Pick and Place demo..."
+-ros2 launch ur_mtc_pick_place_demo pick_place_demo.launch.py \
+-    gripper:="$GRIPPER"
++MTC_LAUNCH_ARGS=("gripper:=$GRIPPER")
++if [ -n "${MTC_NODE_PARAMS_FILE:-}" ]; then
++    MTC_LAUNCH_ARGS+=("mtc_node_params_file:=$MTC_NODE_PARAMS_FILE")
++fi
++ros2 launch ur_mtc_pick_place_demo pick_place_demo.launch.py \
++    "${MTC_LAUNCH_ARGS[@]}"
+ 
+ wait
